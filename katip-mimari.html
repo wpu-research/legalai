@@ -1,0 +1,228 @@
+<title>Kâtip Mimarisi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: tek sütun dosya-kapağı; katman bantları yukarıdan aşağı veri akışını gösterir */
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#18202b; --muted:#5a6676; --line:#d9dee5;
+  --accent:#1f4e8c; --accent-soft:#e6edf7; --gate:#b4630f; --gate-soft:#fbefe1;
+  --local:#2f6b4f; --local-soft:#e5f1ea; --cloud:#5b3fa0; --cloud-soft:#eeeafa;
+  --display:"Spectral",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11151b; --paper:#181e26; --ink:#e6ebf1; --muted:#9aa6b5; --line:#2c3541;
+  --accent:#8fb4ea; --accent-soft:#1d2a3d; --gate:#f0a556; --gate-soft:#3a2a17;
+  --local:#7cc8a1; --local-soft:#183026; --cloud:#b9a4f0; --cloud-soft:#2a2342; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151b; --paper:#181e26; --ink:#e6ebf1; --muted:#9aa6b5; --line:#2c3541;
+  --accent:#8fb4ea; --accent-soft:#1d2a3d; --gate:#f0a556; --gate-soft:#3a2a17;
+  --local:#7cc8a1; --local-soft:#183026; --cloud:#b9a4f0; --cloud-soft:#2a2342; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(30px,5vw,44px)} h2{font-size:24px} h3{font-size:17px;font-family:var(--body);font-weight:600}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:14px}
+.lede{font-size:18px;color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--muted);white-space:nowrap}
+.chip.opus{color:var(--cloud);border-color:var(--cloud);background:var(--cloud-soft)}
+.chip.sonnet{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.chip.haiku{color:var(--local);border-color:var(--local);background:var(--local-soft)}
+.chip.gate{color:var(--gate);border-color:var(--gate);background:var(--gate-soft)}
+section{display:grid;gap:18px}
+.sec-head{display:grid;gap:6px}
+/* katman akışı */
+.flow{display:grid;gap:0}
+.band{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start}
+.band .tag{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.band .tag b{display:block;font-family:var(--body);font-size:14px;color:var(--ink);font-weight:600}
+.band .items{display:flex;flex-wrap:wrap;gap:6px}
+.band .items span{font-size:13px;padding:3px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--line)}
+.band.local{border-left:4px solid var(--local)}
+.band.shield{border-left:4px solid var(--gate);background:var(--gate-soft)}
+.band.core{border-left:4px solid var(--cloud);background:var(--cloud-soft)}
+.band.dept{border-left:4px solid var(--accent)}
+.band.human{border-left:4px solid var(--gate)}
+.arrow{height:22px;display:flex;justify-content:center;align-items:center;color:var(--muted);font-family:var(--mono);font-size:11px;gap:8px}
+.arrow::before{content:"";width:1px;height:100%;background:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+/* departmanlar */
+.depts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.dept-card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.dept-card .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.dept-card ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.dept-card .guard{font-size:13px;color:var(--gate);border-top:1px dashed var(--line);padding-top:8px}
+.brief{background:var(--ink);color:var(--bg);border-radius:6px;padding:18px;display:grid;gap:8px}
+.brief .eyebrow{color:var(--bg);opacity:.7}
+.brief ol{margin:0;padding-left:20px;display:grid;gap:2px;font-size:14px}
+/* tablolar */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+.lvl{font-family:var(--mono);font-weight:500}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cmp>div{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:6px;min-width:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:22px}
+.roadmap{display:grid;gap:8px}
+.phase{display:grid;grid-template-columns:44px 90px 1fr;gap:12px;align-items:baseline;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.phase .n{font-family:var(--display);font-size:22px;color:var(--accent)}
+.phase .d{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.phase p{font-size:14px}
+.phase small{display:block;color:var(--muted);font-size:13px}
+.qs{margin:0;padding-left:20px;display:grid;gap:6px;max-width:72ch}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:640px){.band{grid-template-columns:1fr}.phase{grid-template-columns:36px 1fr}.phase .d{grid-column:2}.phase p{grid-column:1/-1}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Tasarım · 26 Ekim 2026 · LegalAi</div>
+  <h1>Kâtip: hukuk bürosu için Claude tabanlı AI sistemi</h1>
+  <p class="lede">Büronun verisi ofiste kalır. Yalnızca akıl yürütme gereken metin parçaları AB bölgesindeki Claude'a gider. Dışarıya giden her e-posta, fatura, dilekçe ve takvim daveti bir avukatın onayından geçer.</p>
+  <div class="meta">
+    <span class="chip">8 departman</span>
+    <span class="chip">Claude Agent SDK</span>
+    <span class="chip">Bedrock eu-central-1</span>
+    <span class="chip">UYAP · HMK · AAÜT · KVKK</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Videodaki tasarımdan farkı</div>
+    <h2>Model bulutta, veri ofiste</h2>
+  </div>
+  <div class="cmp">
+    <div><div class="eyebrow">Orijinal (ReStructure AI)</div><h3>Ollama · gpt-oss:120b</h3><p>Her şey ofis sunucusunda. 80 GB+ GPU gerekir, sunucu 15–30 bin $. Türkçe hukuk dilinde zayıf. Akışlar n8n'de.</p></div>
+    <div><div class="eyebrow">Kâtip</div><h3>Opus 5.5 · Sonnet 5.5 · Haiku 5.5</h3><p>Arşiv, veritabanı, OCR, ses tanıma ve embedding yerelde. Model çağrıları Frankfurt'taki Bedrock'a. Hassas dosyalar takma adla, en gizli dosyalar hiç gönderilmez.</p></div>
+    <div><div class="eyebrow">Tahmini model maliyeti</div><div class="num">~100–150 $/ay</div><p>5 avukatlı büro varsayımı, liste fiyatı, cache hariç. Pilot ayında gerçek kullanım loglarından ölçülecek.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Mimari</div>
+    <h2>Altı katman, yukarıdan aşağı</h2>
+  </div>
+  <div class="legend"><span><i style="background:var(--local)"></i>Yerel (ofis sunucusu)</span><span><i style="background:var(--gate)"></i>Kontrol noktası</span><span><i style="background:var(--cloud)"></i>Claude çağrısı</span><span><i style="background:var(--accent)"></i>Departman ajanları</span></div>
+  <div class="flow">
+    <div class="band"><div class="tag">01<b>Giriş kanalları</b></div><div class="items"><span>Telefon (SIP · Verimor/Netgsm)</span><span>E-posta (M365 / Gmail)</span><span>Web formu</span><span>UYAP evrakı (klasör)</span><span>Cal.com</span><span>Taranmış arşiv</span><span>Avukat sohbeti</span></div></div>
+    <div class="arrow">olaylar</div>
+    <div class="band local"><div class="tag">02<b>Yerel veri katmanı</b></div><div class="items"><span>Postgres 17 + pgvector + pg_trgm</span><span>Paperless-ngx (OCR)</span><span>Nextcloud + OnlyOffice</span><span>faster-whisper (Türkçe)</span><span>bge-m3 embedding</span><span>Kimai</span><span>Denetim kaydı (hash zinciri)</span><span>Authentik SSO</span></div></div>
+    <div class="arrow">yalnız gereken parça</div>
+    <div class="band shield"><div class="tag">03<b>Gizlilik Kalkanı</b></div><div class="items"><span>L1 doğrudan</span><span>L2 takma ad: ⟦KİŞİ_3⟧ ⟦TCKN_1⟧ ⟦IBAN_1⟧</span><span>L3 buluta gitmez</span><span>Presidio + Türkçe tanıyıcılar</span><span>Dönüşte yerelde geri çözme</span></div></div>
+    <div class="arrow">maskelenmiş metin</div>
+    <div class="band core"><div class="tag">04<b>Kâtip çekirdeği</b></div><div class="items"><span>Claude Agent SDK (ofiste çalışır)</span><span>Yönlendirici: Haiku 5.5</span><span>8 alt-ajan</span><span>MCP araç sunucuları</span><span>Skills: büro profili, dilekçe üslubu, ücret, süre kuralları</span><span>Hooks: izin kapısı + denetim</span><span>Prompt cache</span></div></div>
+    <div class="arrow">araç çağrıları</div>
+    <div class="band dept"><div class="tag">05<b>Departmanlar</b></div><div class="items"><span>Kabul & Resepsiyon</span><span>Çatışma & Vekalet</span><span>Süreler & Duruşma</span><span>Araştırma & İçtihat</span><span>Dilekçe & İnceleme</span><span>E-posta & Müvekkil</span><span>Zaman Kaydı</span><span>Faturalama & Emanet</span></div></div>
+    <div class="arrow">taslaklar</div>
+    <div class="band human"><div class="tag">06<b>İnsan onayı</b></div><div class="items"><span>Onay kuyruğu (panel + mobil)</span><span>Avukat</span><span>Stajyer / sekreter</span><span>Müvekkil</span><span>08:00 tek sayfa brifing</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">05 · Departmanlar</div>
+    <h2>Her departman bir alt-ajan</h2>
+    <p>Kendi sistem istemi, kendi modeli, yalnız kendi araçları. Kesin hesap gerektiren her şey (süre, çatışma eşleşmesi, ücret tarifesi) koddadır; model açıklar, karar vermez.</p>
+  </div>
+  <div class="depts">
+    <div class="dept-card"><div class="top"><h3>Kabul & Resepsiyon</h3><span class="chip haiku">Haiku 5.5</span></div>
+      <ul><li>Mesai dışı aramaları karşılar: SIP → LiveKit → Whisper → Haiku → Türkçe ses</li><li>Kabul formunu doldurur, karşı tarafı çatışma kontrolüne yollar</li><li>Temizse Cal.com'da ön görüşme; avukata 07:30 bildirimi</li></ul>
+      <div class="guard">Hukuki görüş, ücret ya da başarı vaadi yok (Av. K. m.55). KVKK aydınlatması sabit metin.</div></div>
+    <div class="dept-card"><div class="top"><h3>Çatışma & Vekalet</h3><span class="chip haiku">Haiku 5.5</span></div>
+      <ul><li>TCKN/VKN tam eşleşme + pg_trgm bulanık isim eşleşmesi</li><li>Vekaletname ve ücret sözleşmesi taslağı</li><li>AAÜT asgari altı kontrolü (Av. K. m.164)</li></ul>
+      <div class="guard">Eşleşme kararı SQL'de. Model yalnız sonucu özetler.</div></div>
+    <div class="dept-card"><div class="top"><h3>Süreler & Duruşma</h3><span class="chip sonnet">Sonnet 5.5</span></div>
+      <ul><li>UYAP evrakından mahkeme, esas no, tebliğ tarihi çıkarımı</li><li>Deterministik süre hesaplayıcı: HMK, adli tatil (m.104), resmi tatiller</li><li>7/3/1 gün kala uyarı, CalDAV takvim</li></ul>
+      <div class="guard">UYAP'a otomatik giriş yok. Kritik süreye iki kişi onayı.</div></div>
+    <div class="dept-card"><div class="top"><h3>Araştırma & İçtihat</h3><span class="chip opus">Opus 5.5</span></div>
+      <ul><li>Büro arşivi: OCR → bge-m3 → pgvector + Türkçe tam metin (hibrit)</li><li>Yargıtay, Danıştay, AYM; lisanslıysa Lexpera/Kazancı</li><li>Citations açık: her iddia kaynağa bağlı</li></ul>
+      <div class="guard">Her karar künyesi DB'de doğrulanır. Kaynaksız içtihat yok.</div></div>
+    <div class="dept-card"><div class="top"><h3>Dilekçe & İnceleme</h3><span class="chip opus">Opus 5.5 · high</span></div>
+      <ul><li>Dosya özeti + içtihat + büro şablonu (docxtpl, antetli)</li><li>Skill: büronun iyi dilekçelerinden çıkarılmış üslup</li><li>OnlyOffice'te izlenen değişikliklerle sunum</li></ul>
+      <div class="guard">Avukat onaylar, e-imzalar ve UYAP'a kendisi yükler.</div></div>
+    <div class="dept-card"><div class="top"><h3>E-posta & Müvekkil</h3><span class="chip sonnet">Sonnet 5.5</span></div>
+      <ul><li>Haiku gelen kutusunu sınıflar: dosya, aciliyet, yanıt gerekir mi</li><li>Sonnet büro tonunda yanıt taslağı yazar</li><li>Haftalık müvekkil durum özeti</li></ul>
+      <div class="guard">Taslaklar klasörüne yazar, kendisi göndermez.</div></div>
+    <div class="dept-card"><div class="top"><h3>Zaman Kaydı</h3><span class="chip haiku">Haiku 5.5</span></div>
+      <ul><li>E-posta, toplantı, onaylı taslak, telefon notu → dosyaya eşleme</li><li>Kimai'ye taslak kayıt, süre önerisi</li><li>18:00'de tek ekran: onayla / düzelt</li></ul>
+      <div class="guard">Videodaki "+70 bin $" iddiasının kaynağı: kaçan faturalanabilir zaman.</div></div>
+    <div class="dept-card"><div class="top"><h3>Faturalama & Emanet</h3><span class="chip sonnet">Sonnet 5.5</span></div>
+      <ul><li>Saatler + sabit ücret + masraf avansı → fatura taslağı</li><li>AAÜT, sözleşme ve emanet bakiyesi kontrolü</li><li>e-SMM, GİB entegratörü (Paraşüt, Logo, Uyumsoft)</li></ul>
+      <div class="guard">Yönetici ortak imzalamadan gönderilmez.</div></div>
+  </div>
+  <div class="brief">
+    <div class="eyebrow">Her sabah 08:00 · Sonnet 5.5 · veriler SQL'den</div>
+    <h3>Tek sayfa brifing</h3>
+    <ol><li>Bugünkü duruşmalar</li><li>7 gün içindeki süreler</li><li>Gece gelen aramalar ve kabuller</li><li>Onay bekleyen taslaklar</li><li>Dünden onaylanmamış zaman kayıtları</li><li>Tahsil edilmemiş faturalar</li></ol>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Gizlilik ve uyum</div>
+    <h2>Dosya başına hassasiyet seviyesi</h2>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Seviye</th><th>Örnek dosyalar</th><th>Claude'a ne gider</th></tr></thead>
+    <tbody>
+      <tr><td class="lvl">L1 Normal</td><td>Ticari alacak, kira, iş hukuku</td><td>Metin olduğu gibi, AB bölgesinde, eğitimde kullanılmaz</td></tr>
+      <tr><td class="lvl">L2 Hassas</td><td>Ceza, aile, sağlık verisi (KVKK m.6 özel nitelikli)</td><td>Takma adlı metin; eşleme tablosu yerelde</td></tr>
+      <tr><td class="lvl">L3 Çok gizli</td><td>Avukatın işaretlediği dosyalar</td><td>Hiçbir şey. Yalnız yerel arama ve şablon</td></tr>
+    </tbody></table></div>
+  <p>KVKK m.9 için sağlayıcıyla standart sözleşme ve imzadan sonra 5 iş günü içinde Kurum'a bildirim. Av. K. m.36 sır saklama yükümlülüğü için saklama süresi ve eğitim yasağı sözleşmede. Bu tasarım hukuki görüş değildir; bir hukuk danışmanı teyit etmeli.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Model yönlendirme</div>
+    <h2>Hangi iş hangi modele</h2>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>İş</th><th>Model</th><th>Efor</th></tr></thead>
+    <tbody>
+      <tr><td>E-posta sınıflama, zaman eşleme, taraf çıkarma, telefon</td><td><span class="chip haiku">Haiku 5.5</span></td><td>low</td></tr>
+      <tr><td>E-posta taslağı, UYAP evrak çıkarımı, brifing, fatura kontrolü</td><td><span class="chip sonnet">Sonnet 5.5</span></td><td>medium</td></tr>
+      <tr><td>İçtihat araştırması, dilekçe, sözleşme incelemesi</td><td><span class="chip opus">Opus 5.5</span></td><td>high</td></tr>
+      <tr><td>Gece arşiv özetleri</td><td><span class="chip haiku">Haiku 5.5 · Batch</span></td><td>low</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Yol haritası · ~13–14 hafta</div>
+    <h2>Önce düşük risk, en son telefon</h2>
+  </div>
+  <div class="roadmap">
+    <div class="phase"><span class="n">0</span><span class="d">1 hafta</span><p>Sunucu, Postgres, SSO, denetim kaydı, Gizlilik Kalkanı, KVKK belgeleri, ilk skill'ler<small>Temel</small></p></div>
+    <div class="phase"><span class="n">1</span><span class="d">2–3 hafta</span><p>E-posta taslakları, zaman kaydı, sabah brifingi<small>En hızlı görünür fayda, düşük risk</small></p></div>
+    <div class="phase"><span class="n">2</span><span class="d">3 hafta</span><p>Arşiv indeksleme, araştırma, dilekçe<small>Asıl kalite farkı</small></p></div>
+    <div class="phase"><span class="n">3</span><span class="d">2 hafta</span><p>UYAP evrak çıkarımı, süre hesaplayıcı, çatışma kontrolü<small>Yüksek risk: her süre kuralına birim test</small></p></div>
+    <div class="phase"><span class="n">4</span><span class="d">2 hafta</span><p>Faturalama, e-SMM, emanet<small>Muhasebe entegrasyonu büroya özel</small></p></div>
+    <div class="phase"><span class="n">5</span><span class="d">3 hafta</span><p>Telefon resepsiyonisti<small>En karmaşık ve en görünür</small></p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Karar bekleyenler</div>
+    <h2>Açık sorular</h2>
+  </div>
+  <ol class="qs">
+    <li>Pilot büro var mı? Kaç avukat, hangi alanlar, saatlik mi sabit ücret mi?</li>
+    <li>E-posta Microsoft 365 mi Gmail mi? Hangi e-SMM entegratörü?</li>
+    <li>Claude erişimi: Bedrock Frankfurt mı, Anthropic API (ZDR sözleşmesiyle) mi? Opus 5.5'in eu-central-1'de olduğu doğrulanmalı.</li>
+    <li>L3 dosyalar için küçük bir yerel model istenir mi?</li>
+    <li>Tek büroya kurulum mu, çok büroya satılacak bir paket mi?</li>
+  </ol>
+</section>
+
+<footer>Esin kaynağı: ReStructure AI, "The Private AI System for Local Law Firms". Ayrıntılı metin: <code>~/Desktop/Urunler/LegalAi/TASARIM.md</code></footer>
+</div>
